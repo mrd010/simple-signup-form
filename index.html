@@ -14,22 +14,22 @@
   <body>
     <div class="wrapper">
       <header class="header">
-        <h1>Songinfinity</h1>
+        <h1 class="no-select">Songinfinity</h1>
       </header>
       <div class="container main">
-        <div class="title-image">
+        <div class="title-image no-select">
           <img src="./img/background.png" alt="title image" />
         </div>
         <div class="form-container">
-          <h2>Sign Up</h2>
-          <p>
+          <h2 class="form-header no-wrap">Sign Up</h2>
+          <p class="form-desc">
             Create an account to access all features and sync your device with
             your cloud space.
           </p>
-          <form action="" method="post">
-            <h3>Let's do this!</h3>
+          <form action="" method="post" class="sign-up-form">
+            <h3 class="inputs-header">Let's do this!</h3>
             <div class="input-field">
-              <label for="user-name">User Name</label>
+              <label for="user-name" class="no-wrap">User Name</label>
               <input type="text" id="user-name" name="user-name" required />
             </div>
             <div class="input-field">
@@ -42,7 +42,9 @@
                 <input type="password" id="password" name="password" required />
               </div>
               <div class="input-field">
-                <label for="password">Confirm Password</label>
+                <label for="password-confirm" class="no-wrap"
+                  >Confirm Password</label
+                >
                 <input
                   type="password"
                   id="password-confirm"
@@ -52,12 +54,15 @@
               </div>
             </div>
             <div class="input-field">
-              <button type="submit">Create Account</button>
+              <button type="submit" class="no-wrap no-select">
+                Create Account
+              </button>
             </div>
           </form>
-          <div class="container">
+          <div class="container form-footer">
             <p>
-              Already have an account?<a href="" class="inline-link">Log in</a>
+              Already have an account?
+              <a class="no-wrap" href="" class="inline-link">Log in</a>
             </p>
           </div>
         </div>
