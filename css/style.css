@@ -27,6 +27,7 @@ button {
   --theme: #29a8aa;
   --theme-darker: #165c5d;
   --theme-darkest: #031010;
+  --error: rgb(236, 55, 0);
   /* font */
   --saira: "Saira", sans-serif;
   --roboto: "Roboto", sans-serif;
@@ -80,7 +81,6 @@ body {
 .form-container label {
   font-family: var(--saira);
   color: var(--theme-darker);
-  cursor: text;
 }
 
 .form-container form.sign-up-form {
@@ -95,7 +95,7 @@ body {
 
 .sign-up-form .inputs-header {
   font-size: 1.2rem;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 
 .sign-up-form .input-field {
@@ -114,18 +114,27 @@ body {
   color: var(--theme-darkest);
   margin: 0.5rem 0;
   border: none;
+  font-size: 1.2rem;
+  background-color: var(--bg);
 }
 
 .sign-up-form label {
   position: absolute;
-  top: 1rem;
+  top: 1.1rem;
   left: 0.5rem;
+  transition: right 0.1s ease;
+  text-align: left;
+  z-index: 1;
+  user-select: none;
+  cursor: text;
+  background-color: var(--bg);
 }
 
 .sign-up-form button {
-  /* color: var(--bg); */
   background-color: var(--theme-darker);
   border: 2px solid #fff2;
+  cursor: pointer;
+  transition: color 0.1s ease;
 }
 
 .form-container .form-footer {
@@ -142,6 +151,43 @@ body {
 .form-footer a:focus {
   text-decoration: underline;
 }
+
+/* dynamic part */
+
+.form-container button:hover {
+  background-color: #165c5dbb;
+}
+
+.form-container button:active {
+  background-color: #165c5dee;
+}
+
+.form-container input:focus {
+  outline: 2px solid var(--theme-darker);
+}
+
+.form-container input:focus + label,
+.form-container input:not(:placeholder-shown) + label {
+  text-align: right;
+  right: 0.5rem;
+  font-weight: 600;
+  font-size: 80%;
+  top: 0.7rem;
+  left: unset;
+  padding: 0.6rem 5px;
+}
+
+.form-container input:invalid:not(:placeholder-shown),
+.form-container input[type].error {
+  outline: 2px solid var(--error);
+}
+
+.form-container input:invalid:not(:placeholder-shown) + label,
+.form-container input[type].error + label {
+  color: var(--error);
+}
+
+/* media queries */
 
 @media only screen and (min-width: 426px) {
   .header {
@@ -203,8 +249,14 @@ body {
 
   .sign-up-form label {
     position: absolute;
-    top: 1.4rem;
+    right: unset;
+    top: 1.5rem;
+    padding: 0;
     left: 0.7rem;
+    transition: all 0.2s ease;
+    width: 100%;
+    cursor: text;
+    background-color: transparent;
   }
 
   .form-container .input-field {
@@ -220,6 +272,30 @@ body {
 
   .sign-up-form button {
     width: 200px;
+  }
+
+  .form-container input:focus + label,
+  .form-container input:not(:placeholder-shown) + label {
+    top: -1.4rem;
+    left: 0;
+    right: 100%;
+    text-align: left;
+    color: var(--bg);
+    font-weight: 600;
+    font-size: 90%;
+  }
+
+  .form-container input:invalid:not(:placeholder-shown) + label::after,
+  .form-container input[type].error + label::after {
+    content: "⚠️";
+    position: absolute;
+    right: 0.2rem;
+    top: 2.2rem;
+    font-size: 1.3rem;
+    font-weight: normal;
+    font-family: "Times New Roman", Times, serif;
+    background-color: var(--bg);
+    padding: 0.5rem;
   }
 }
 
@@ -280,7 +356,13 @@ body {
 
   .sign-up-form label {
     position: absolute;
-    top: 1.6rem;
+    top: 1.7rem;
     left: 0.8rem;
+  }
+  .form-container input:invalid:not(:placeholder-shown) + label::after,
+  .form-container input[type].error + label::after {
+    top: 2.3rem;
+    right: 0.5rem;
+    font-size: 1.3rem;
   }
 }
